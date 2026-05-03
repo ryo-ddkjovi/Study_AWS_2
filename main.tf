@@ -1,3 +1,10 @@
+terraform {
+  backend "s3" {
+    bucket = "ryo-terraform-state-20260430"
+    key    = "study-aws-2/terraform.tfstate"
+    region = "ap-northeast-1"
+  }
+}
 provider "aws" {
   region = "ap-northeast-1"
 }

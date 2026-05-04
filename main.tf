@@ -29,6 +29,10 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+locals {
+  wordpress_db_host = var.restore_db_endpoint != "" ? var.restore_db_endpoint : aws_db_instance.mysql.address
+}
+
 # -------------------------
 # SSH Key Pair for Bastion
 # -------------------------
@@ -369,7 +373,7 @@ services:
     ports:
       - "80:80"
     environment:
-      WORDPRESS_DB_HOST: ${aws_db_instance.mysql.address}:3306
+      WORDPRESS_DB_HOST: ${local.wordpress_db_host}:3306
       WORDPRESS_DB_USER: ${var.db_user}
       WORDPRESS_DB_PASSWORD: ${var.db_pass}
       WORDPRESS_DB_NAME: wordpress

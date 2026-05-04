@@ -1,7 +1,12 @@
-terraform.tfvars
-.env
-*.pem
+# Terraform
 .terraform/
 *.tfstate
 *.tfstate.backup
+
+# Secrets
+terraform.tfvars
+.env
+*.pem
+
+# Mac
 .DS_Store

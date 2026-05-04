@@ -10,6 +10,12 @@ variable "db_pass" {
 }
 
 variable "my_ip" {
-  description = "踏み台サーバへのSSHを許可する自分のグローバルIP。例: 203.0.113.10/32"
+  description = "踏み台サーバへのSSHを許可する自分のグローバルIP"
   type        = string
+}
+
+variable "restore_db_endpoint" {
+  description = "復元DBに切り替えるときのエンドポイント（通常は空）"
+  type        = string
+  default     = ""
 }

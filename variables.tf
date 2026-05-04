@@ -8,3 +8,8 @@ variable "db_pass" {
   type        = string
   sensitive   = true
 }
+
+variable "my_ip" {
+  description = "踏み台サーバへのSSHを許可する自分のグローバルIP。例: 203.0.113.10/32"
+  type        = string
+}

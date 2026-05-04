@@ -22,3 +22,18 @@ output "rds_endpoint" {
   description = "WordPressが接続するRDS MySQLのエンドポイント。ブラウザで開くものではない。"
   value       = aws_db_instance.mysql.address
 }
+
+output "bastion_public_ip" {
+  description = "踏み台サーバのパブリックIP"
+  value       = aws_instance.bastion.public_ip
+}
+
+output "bastion_ssh_command" {
+  description = "踏み台サーバへSSH接続するコマンド"
+  value       = "ssh -i bastion-key.pem ubuntu@${aws_instance.bastion.public_ip}"
+}
+
+output "rds_mysql_command" {
+  description = "踏み台サーバ内でRDSへ接続するコマンド"
+  value       = "mysql -h ${aws_db_instance.mysql.address} -u ${var.db_user} -p"
+}
